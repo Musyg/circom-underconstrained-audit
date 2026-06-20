@@ -1,0 +1,41 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        branch: [master, fixed]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout ${{ matrix.branch }}
+        run: git checkout ${{ matrix.branch }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install circom
+        run: |
+          curl -fsSL -o circom https://github.com/iden3/circom/releases/latest/download/circom-linux-amd64
+          chmod +x circom
+          sudo mv circom /usr/local/bin/circom
+          circom --version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Groth16 setup
+        run: npm run setup
+
+      - name: Run proof-of-concept
+        run: npm test
