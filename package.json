@@ -1,0 +1,16 @@
+{
+  "name": "circom-underconstrained-audit",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/exploit.cjs",
+    "setup": "bash scripts/setup.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "snarkjs": "^0.7.6"
+  }
+}
