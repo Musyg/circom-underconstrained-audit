@@ -95,6 +95,18 @@ proof was meant to guarantee is fully bypassed.
 
 ---
 
+## Informational, Gas & Non-Critical
+
+## I-01, Inputs lack range constraints (Informational)
+
+`root` and `n` are field elements with no range or bit-length constraints (e.g. `Num2Bits`). The circuit silently accepts any field-overflowing assignment, and the expected value domain is neither documented nor enforced. If callers assume bounded integers, constrain the inputs explicitly.
+
+## I-02, No integration guidance (Informational)
+
+The template ships without notes on witness generation or how `n` is meant to be derived client-side. For a circuit whose security depends on correct usage, document the intended proving flow so integrators do not reintroduce the soundness gap from the consumer side.
+
+> No gas category applies to a Circom circuit; the equivalent axis is constraint count, already minimal here.
+
 ## Scope and disclaimer
 
 `Square.circom` is intentionally vulnerable code written to demonstrate audit methodology end
