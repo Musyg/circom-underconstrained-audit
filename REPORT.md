@@ -95,7 +95,7 @@ proof was meant to guarantee is fully bypassed.
 
 ---
 
-## Informational, Gas & Non-Critical
+## Informational & Gas
 
 ## I-01, Inputs lack range constraints (Informational)
 
@@ -105,7 +105,7 @@ proof was meant to guarantee is fully bypassed.
 
 The template ships without notes on witness generation or how `n` is meant to be derived client-side. For a circuit whose security depends on correct usage, document the intended proving flow so integrators do not reintroduce the soundness gap from the consumer side.
 
-> No gas category applies to a Circom circuit; the equivalent axis is constraint count, already minimal here.
+> No gas optimisations apply to a Circom circuit; the equivalent axis is constraint count, already minimal here.
 
 ## Scope and disclaimer
 
